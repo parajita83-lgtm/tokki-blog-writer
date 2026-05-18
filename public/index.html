@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>토끼엄마 블로그 글쓰기 도우미</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="badge">Malaysia Life Blog Tool</div>
+      <h1>토끼엄마 블로그 글쓰기 도우미</h1>
+      <p>말레이시아 생활 경험 3~4줄을 네이버 블로그 글로 바꿔요.</p>
+    </header>
+
+    <main class="grid">
+      <section class="card inputCard">
+        <h2>1. 주제 선택</h2>
+        <select id="topicSelect">
+          <option value="말레이시아 운전학원">말레이시아 운전학원</option>
+          <option value="말레이시아 운전면허">말레이시아 운전면허</option>
+          <option value="말레이시아 물가 현실">말레이시아 물가 현실</option>
+          <option value="말레이시아 병원 후기">말레이시아 병원 후기</option>
+          <option value="말레이시아 국제학교">말레이시아 국제학교</option>
+          <option value="말레이시아 집 렌트">말레이시아 집 렌트</option>
+          <option value="말레이시아 한달살기 비용">말레이시아 한달살기 비용</option>
+          <option value="말레이시아 육아 현실">말레이시아 육아 현실</option>
+          <option value="쿠알라룸푸르 생활">쿠알라룸푸르 생활</option>
+          <option value="말레이시아 쇼핑/마트">말레이시아 쇼핑/마트</option>
+          <option value="custom">직접 입력</option>
+        </select>
+        <input id="customTopic" class="hidden" placeholder="직접 주제를 입력하세요" />
+
+        <h2>2. 내 경험/골자</h2>
+        <textarea id="notes" placeholder="예:
+외국인도 등록 가능했다.
+영어 가능한 학원을 찾는 게 중요했다.
+아이 키우는 집은 운전이 꼭 필요했다.
+비용은 생각보다 비쌌고 일정 잡는 데 시간이 걸렸다."></textarea>
+
+        <h2>3. 스타일 옵션</h2>
+        <div class="checks">
+          <label><input type="checkbox" value="검색 최적화 강조" checked /> 검색 최적화</label>
+          <label><input type="checkbox" value="엄마 감성 강조" checked /> 엄마 감성</label>
+          <label><input type="checkbox" value="경험담 강조" checked /> 경험담</label>
+          <label><input type="checkbox" value="정보형 글 스타일" checked /> 정보형</label>
+        </div>
+
+        <button id="generateBtn" class="mainBtn">블로그 글 생성</button>
+        <button id="historyBtn" class="subBtn wide">최근 기록 보기</button>
+      </section>
+
+      <section class="card resultCard">
+        <div class="resultTop">
+          <h2>생성 결과</h2>
+          <div class="btnRow">
+            <button id="copyBtn" class="subBtn">전체 복사</button>
+            <button id="clearBtn" class="ghostBtn">지우기</button>
+          </div>
+        </div>
+        <pre id="result">아직 생성된 글이 없습니다.</pre>
+      </section>
+    </main>
+
+    <section id="historyBox" class="card hidden">
+      <div class="resultTop">
+        <h2>최근 기록</h2>
+        <button id="clearHistoryBtn" class="ghostBtn">기록 삭제</button>
+      </div>
+      <div id="historyList"></div>
+    </section>
+  </div>
+  <script src="/script.js"></script>
+</body>
+</html>
