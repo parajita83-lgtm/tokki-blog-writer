@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>토끼엄마 블로그 글쓰기 도우미</title>
+  <title>토끼엄마 블로그 글쓰기 도우미 V4</title>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
-      <div class="badge">Malaysia Life Blog Tool</div>
-      <h1>토끼엄마 블로그 글쓰기 도우미</h1>
-      <p>말레이시아 생활 경험 3~4줄을 네이버 블로그 글로 바꿔요.</p>
+      <div>
+        <div class="badge">V4 Online · Naver Blog + Threads</div>
+        <h1>토끼엄마 블로그 글쓰기 도우미</h1>
+        <p>말레이시아 생활 경험을 네이버 블로그 글과 스레드 글로 나눠 생성해요.</p>
+      </div>
+      <button id="historyBtn" class="subBtn">최근 기록 보기</button>
     </header>
 
     <main class="grid">
       <section class="card inputCard">
         <h2>1. 주제 선택</h2>
         <select id="topicSelect">
+          <option value="말레이시아 국제학교">말레이시아 국제학교</option>
           <option value="말레이시아 운전학원">말레이시아 운전학원</option>
           <option value="말레이시아 운전면허">말레이시아 운전면허</option>
           <option value="말레이시아 물가 현실">말레이시아 물가 현실</option>
           <option value="말레이시아 병원 후기">말레이시아 병원 후기</option>
-          <option value="말레이시아 국제학교">말레이시아 국제학교</option>
           <option value="말레이시아 집 렌트">말레이시아 집 렌트</option>
           <option value="말레이시아 한달살기 비용">말레이시아 한달살기 비용</option>
           <option value="말레이시아 육아 현실">말레이시아 육아 현실</option>
@@ -30,47 +33,79 @@
           <option value="말레이시아 쇼핑/마트">말레이시아 쇼핑/마트</option>
           <option value="custom">직접 입력</option>
         </select>
+
         <input id="customTopic" class="hidden" placeholder="직접 주제를 입력하세요" />
 
-        <h2>2. 내 경험/골자</h2>
+        <h2>2. 경험/골자 입력</h2>
         <textarea id="notes" placeholder="예:
-외국인도 등록 가능했다.
-영어 가능한 학원을 찾는 게 중요했다.
-아이 키우는 집은 운전이 꼭 필요했다.
-비용은 생각보다 비쌌고 일정 잡는 데 시간이 걸렸다."></textarea>
+국제학교는 어떤 학제에 따르냐에 따라 Year1 시작 나이가 다르다.
+영국계는 보통 만 5~6세, 말레이시아 성격이 강한 국제학교는 만 7세인 경우가 있다.
+전학 시 학제가 다른 학교로 가면 학년 변화가 생길 수 있다.
+한국과 비슷한 입학 나이를 원하면 말레이시아 계통 국제학교도 알아보는 게 좋다."></textarea>
 
-        <h2>3. 스타일 옵션</h2>
+        <h2>3. 참고 문체 샘플 <span class="optional">(선택)</span></h2>
+        <textarea id="sampleText" class="sample" placeholder="원하는 말투의 샘플 글이 있으면 붙여넣어 주세요. 비워도 됩니다."></textarea>
+
+        <h2>4. 스타일 옵션</h2>
         <div class="checks">
           <label><input type="checkbox" value="검색 최적화 강조" checked /> 검색 최적화</label>
-          <label><input type="checkbox" value="엄마 감성 강조" checked /> 엄마 감성</label>
           <label><input type="checkbox" value="경험담 강조" checked /> 경험담</label>
+          <label><input type="checkbox" value="엄마 감성 강조" checked /> 엄마 감성</label>
           <label><input type="checkbox" value="정보형 글 스타일" checked /> 정보형</label>
         </div>
 
-        <button id="generateBtn" class="mainBtn">블로그 글 생성</button>
-        <button id="historyBtn" class="subBtn wide">최근 기록 보기</button>
+        <button id="generateBtn" class="mainBtn">글 생성하기</button>
+        <p class="hint">온라인 버전의 최근 기록은 현재 브라우저에 저장됩니다.</p>
       </section>
 
-      <section class="card resultCard">
-        <div class="resultTop">
-          <h2>생성 결과</h2>
-          <div class="btnRow">
-            <button id="copyBtn" class="subBtn">전체 복사</button>
-            <button id="clearBtn" class="ghostBtn">지우기</button>
+      <section class="resultArea">
+        <section class="card resultCard">
+          <h2>검색 최적화 제목 추천 3개</h2>
+          <ol id="seoTitles" class="listBox empty"><li>아직 생성된 결과가 없습니다.</li></ol>
+        </section>
+
+        <section class="card resultCard">
+          <h2>추가 제목 아이디어 5개</h2>
+          <ol id="extraTitles" class="listBox empty"><li>아직 생성된 결과가 없습니다.</li></ol>
+        </section>
+
+        <section class="card resultCard">
+          <h2>썸네일 문구 3개</h2>
+          <ol id="thumbnailTexts" class="listBox empty"><li>아직 생성된 결과가 없습니다.</li></ol>
+        </section>
+
+        <section class="card resultCard">
+          <div class="cardTop">
+            <h2>본문과 네이버태그</h2>
+            <button id="copyBodyBtn" class="subBtn">본문 복사</button>
           </div>
-        </div>
-        <pre id="result">아직 생성된 글이 없습니다.</pre>
+          <pre id="blogBody">아직 생성된 본문이 없습니다.</pre>
+        </section>
+
+        <section class="card resultCard">
+          <div class="cardTop">
+            <h2>스레드 글</h2>
+            <button id="copyThreadsBtn" class="subBtn">스레드 복사</button>
+          </div>
+          <pre id="threadsPost">아직 생성된 스레드 글이 없습니다.</pre>
+        </section>
+
+        <section class="card resultCard">
+          <h2>시리즈 글 추천 5개</h2>
+          <ol id="seriesIdeas" class="listBox empty"><li>아직 생성된 결과가 없습니다.</li></ol>
+        </section>
       </section>
     </main>
 
     <section id="historyBox" class="card hidden">
-      <div class="resultTop">
+      <div class="cardTop">
         <h2>최근 기록</h2>
         <button id="clearHistoryBtn" class="ghostBtn">기록 삭제</button>
       </div>
       <div id="historyList"></div>
     </section>
   </div>
+
   <script src="/script.js"></script>
 </body>
 </html>

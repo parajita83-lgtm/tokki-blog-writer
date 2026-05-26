@@ -1,6 +1,7 @@
 {
-  "name": "tokki-blog-writer-render",
-  "version": "1.0.0",
+  "name": "tokki-blog-writer-v4-online",
+  "version": "4.0.0",
+  "description": "Tokki Mom Naver Blog Writer V4 Online / Render",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
